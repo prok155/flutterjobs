@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/svg.dart';
 
 void main() {
-  runApp(MaterialApp(home: MainApp()));
+  runApp(const MaterialApp(home: MainApp()));
 }
 
 class MainApp extends StatelessWidget {
@@ -14,9 +15,11 @@ class MainApp extends StatelessWidget {
       appBar: AppBar(
         toolbarHeight: 0,
         systemOverlayStyle: const SystemUiOverlayStyle(
-            statusBarIconBrightness: Brightness.dark,
-            statusBarColor: Colors.white,
-            statusBarBrightness: Brightness.dark),
+          statusBarIconBrightness: Brightness.dark,
+          // Change color to transparent
+          statusBarColor: Colors.transparent,
+          statusBarBrightness: Brightness.dark,
+        ),
       ),
       body: Center(
         child: Column(
@@ -30,10 +33,14 @@ class MainApp extends StatelessWidget {
               'assets/image.png',
               height: 150,
             ),
+            SvgPicture.asset(
+              'assets/svg_test.svg',
+              width: MediaQuery.of(context).size.width,
+            ),
             const SizedBox(
               height: 20,
             ),
-            Text(
+            const Text(
               'As you can see, image with 30 height has really poor quality, how can I fix that?',
               textAlign: TextAlign.center,
             ),
@@ -44,7 +51,7 @@ class MainApp extends StatelessWidget {
                 onPressed: () {
                   showPopup(context);
                 },
-                child: Text('show popup'))
+                child: const Text('show popup'))
           ],
         ),
       ),
@@ -59,7 +66,7 @@ class MainApp extends StatelessWidget {
         return Container(
           width: double.infinity,
           height: 470,
-          child: Center(
+          child: const Center(
             child: Text(
                 textAlign: TextAlign.center,
                 'Look at status bar, is completely white, it should be darken. '),
