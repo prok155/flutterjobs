@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutterjobs/in_app_purchase.dart';
 
 void main() {
   runApp(const MaterialApp(home: MainApp()));
@@ -35,6 +36,7 @@ class MainApp extends StatelessWidget {
             ),
             SvgPicture.asset(
               'assets/svg_test.svg',
+              height: 100,
               width: MediaQuery.of(context).size.width,
             ),
             const SizedBox(
@@ -48,10 +50,13 @@ class MainApp extends StatelessWidget {
               height: 50,
             ),
             ElevatedButton(
-                onPressed: () {
-                  showPopup(context);
-                },
-                child: const Text('show popup'))
+              onPressed: () {
+                showPopup(context);
+              },
+              child: const Text('show popup'),
+            ),
+            const SizedBox(height: 50),
+            const InAppPurchaseWidget(),
           ],
         ),
       ),
