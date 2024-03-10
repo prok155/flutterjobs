@@ -4,22 +4,33 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutterjobs/in_app_purchase.dart';
 
 void main() {
-  SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-      statusBarBrightness: Brightness.dark,
-      statusBarIconBrightness: Brightness.dark,
-      statusBarColor: Colors.transparent,
-    ),
-  );
   runApp(const MaterialApp(home: MainApp()));
 }
 
-class MainApp extends StatelessWidget {
+class MainApp extends StatefulWidget {
   const MainApp({super.key});
 
   @override
+  State<MainApp> createState() => _MainAppState();
+}
+
+class _MainAppState extends State<MainApp> {
+  bool popupShown = false;
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: PreferredSize(
+        preferredSize: Size.zero,
+        child: AppBar(
+          forceMaterialTransparency: true,
+          systemOverlayStyle: SystemUiOverlayStyle(
+            statusBarBrightness: Brightness.dark,
+            statusBarIconBrightness: Brightness.dark,
+            statusBarColor: popupShown ? Colors.red.shade900 : Colors.red,
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -108,6 +119,9 @@ class MainApp extends StatelessWidget {
   }
 
   void showPopup(BuildContext context) {
+    setState(() {
+      popupShown = true;
+    });
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.white,
@@ -122,6 +136,11 @@ class MainApp extends StatelessWidget {
           ),
         );
       },
-    );
+    ).whenComplete(() {
+      setState(() {
+        popupShown = false;
+      });
+    });
+    ;
   }
 }
