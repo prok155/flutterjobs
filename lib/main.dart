@@ -41,7 +41,7 @@ class MainApp extends StatelessWidget {
               height: 100,
             ),
             const SizedBox(
-              height: 20,
+              height: 30,
             ),
             const Text(
               'As you can see, image with 30 height has really poor quality, how can I fix that?',
