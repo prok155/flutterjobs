@@ -4,6 +4,13 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutterjobs/in_app_purchase.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarBrightness: Brightness.dark,
+      statusBarIconBrightness: Brightness.dark,
+      statusBarColor: Colors.transparent,
+    ),
+  );
   runApp(const MaterialApp(home: MainApp()));
 }
 
@@ -13,15 +20,6 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 0,
-        systemOverlayStyle: const SystemUiOverlayStyle(
-          statusBarIconBrightness: Brightness.dark,
-          // Change color to transparent
-          statusBarColor: Colors.transparent,
-          statusBarBrightness: Brightness.dark,
-        ),
-      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -41,14 +39,59 @@ class MainApp extends StatelessWidget {
               height: 100,
             ),
             const SizedBox(
+              height: 100,
+            ),
+            Image.asset(
+              'assets/image.png',
               height: 30,
+            ),
+            Image.asset(
+              'assets/image.png',
+              height: 150,
+            ),
+            SvgPicture.asset(
+              'assets/svg_test.svg',
+              height: 100,
+            ),
+            const SizedBox(
+              height: 100,
+            ),
+            Image.asset(
+              'assets/image.png',
+              height: 30,
+            ),
+            Image.asset(
+              'assets/image.png',
+              height: 150,
+            ),
+            SvgPicture.asset(
+              'assets/svg_test.svg',
+              height: 100,
+            ),
+            const SizedBox(
+              height: 100,
+            ),
+            Image.asset(
+              'assets/image.png',
+              height: 30,
+            ),
+            Image.asset(
+              'assets/image.png',
+              height: 150,
+            ),
+            SvgPicture.asset(
+              'assets/svg_test.svg',
+              height: 100,
+            ),
+            const SizedBox(
+              height: 100,
             ),
             const Text(
               'As you can see, image with 30 height has really poor quality, how can I fix that?',
               textAlign: TextAlign.center,
             ),
             const SizedBox(
-              height: 50,
+              height: 100,
             ),
             ElevatedButton(
               onPressed: () {

@@ -115,12 +115,13 @@ class _InAppPurchaseWidgetState extends State<InAppPurchaseWidget> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        ElevatedButton(
-          onPressed: () {
-            buy();
-          },
-          child: const Text('purchase product'),
-        ),
+        if (true)
+          ElevatedButton(
+            onPressed: () {
+              buy();
+            },
+            child: const Text('purchase product'),
+          ),
         ElevatedButton(
           onPressed: () {
             restore();
