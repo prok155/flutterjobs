@@ -7,28 +7,27 @@ void main() {
   runApp(const MaterialApp(home: MainApp()));
 }
 
-class MainApp extends StatefulWidget {
+class MainApp extends StatelessWidget {
   const MainApp({super.key});
-
-  @override
-  State<MainApp> createState() => _MainAppState();
-}
-
-class _MainAppState extends State<MainApp> {
-  bool popupShown = false;
   @override
   Widget build(BuildContext context) {
+    final statusBarHeight = MediaQuery.of(context).viewInsets.top;
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: PreferredSize(
-        preferredSize: Size.zero,
-        child: AppBar(
-          forceMaterialTransparency: true,
-          systemOverlayStyle: SystemUiOverlayStyle(
-            statusBarBrightness: Brightness.dark,
-            statusBarIconBrightness: Brightness.dark,
-            statusBarColor: popupShown ? Colors.red.shade900 : Colors.red,
-          ),
+      appBar: AppBar(
+        toolbarHeight: statusBarHeight,
+
+        /// Set backgroundColor when status bar is colored
+        /// & comment forceMaterialTransparency
+        backgroundColor: Colors.red,
+
+        /// comment backgroundColor when status bar is transparent
+        /// & set forceMaterialTransparency to true
+        forceMaterialTransparency: true,
+        systemOverlayStyle: const SystemUiOverlayStyle(
+          statusBarBrightness: Brightness.dark,
+          statusBarIconBrightness: Brightness.dark,
+          statusBarColor: Colors.transparent,
         ),
       ),
       body: SingleChildScrollView(
@@ -119,9 +118,6 @@ class _MainAppState extends State<MainApp> {
   }
 
   void showPopup(BuildContext context) {
-    setState(() {
-      popupShown = true;
-    });
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.white,
@@ -136,11 +132,6 @@ class _MainAppState extends State<MainApp> {
           ),
         );
       },
-    ).whenComplete(() {
-      setState(() {
-        popupShown = false;
-      });
-    });
-    ;
+    );
   }
 }
